@@ -1,4 +1,23 @@
-const testData = {
+export type book = {
+  episodeTitle: string[];
+  guestRecomendation: string[];
+  author: string;
+  rating?: number;
+  link?: string;
+};
+type books = {
+  [k: string | number]: book;
+};
+type episodeDateObjType = {
+  [k: string]: {
+    date: Date | null;
+  };
+};
+export type DataType = {
+  books: books;
+  episodeDateObj: episodeDateObjType;
+};
+export const testData: DataType = {
   books: {
     1940: {
       author: "Susan Dunn",
@@ -49,6 +68,7 @@ const testData = {
       guestRecomendation: ["Kelsey Piper"],
     },
     "Asterisk Magazine": {
+      author: "",
       episodeTitle: [
         "A.I. Is About to Get Much Weirder. Here’s What to Watch For.",
       ],
@@ -243,6 +263,7 @@ const testData = {
       guestRecomendation: ["Tim Hwang"],
     },
     "Jim Ravel’s Theatrical Pickpocketing": {
+      author: "Jim Ravel",
       episodeTitle: ["How the $500 Billion Attention Industry Really Works"],
       guestRecomendation: ["Tim Hwang"],
     },
@@ -769,6 +790,7 @@ const testData = {
       guestRecomendation: ["Rachel Maddow"],
     },
     "Down in New Orleans Billy Sothern": {
+      author: "Billy Sothern",
       episodeTitle: ["Rachel Maddow Looks Back on a Wild 14 Years"],
       guestRecomendation: ["Rachel Maddow"],
     },
@@ -787,7 +809,8 @@ const testData = {
       episodeTitle: ["Interrogating the Stories We Tell About Our Minds"],
       guestRecomendation: ["Rachel Aviv"],
     },
-    "Of Two Minds T.M. Luhrmann": {
+    "Of Two Minds": {
+      author: "T.M. Luhrmann",
       episodeTitle: ["Interrogating the Stories We Tell About Our Minds"],
       guestRecomendation: ["Rachel Aviv"],
     },
@@ -1108,7 +1131,8 @@ const testData = {
       episodeTitle: ["Michelle Goldberg Grapples With Feminism After Roe"],
       guestRecomendation: ["Michelle Goldberg"],
     },
-    "Status and Culture by W. David Marx": {
+    "Status and Culture": {
+      author: "W. David Marx",
       episodeTitle: ["Michelle Goldberg Grapples With Feminism After Roe"],
       guestRecomendation: ["Michelle Goldberg"],
     },
@@ -1722,12 +1746,13 @@ const testData = {
       ],
       guestRecomendation: ["Fareed Zakaria"],
     },
-    "The End of the End of History by Alex Hochuli, George Hoare and Philip Cunliffe":
-      {
-        episodeTitle: ["Can the West Stop Russia by Strangling Its Economy?"],
-        guestRecomendation: ["Adam Tooze"],
-      },
-    "The Future of Money by Eswar S. Prasad": {
+    "The End of the End of History": {
+      author: "Alex Hochuli, George Hoare and Philip Cunliffe",
+      episodeTitle: ["Can the West Stop Russia by Strangling Its Economy?"],
+      guestRecomendation: ["Adam Tooze"],
+    },
+    "The Future of Money": {
+      author: "Eswar S. Prasad",
       episodeTitle: ["Can the West Stop Russia by Strangling Its Economy?"],
       guestRecomendation: ["Adam Tooze"],
     },
@@ -1738,10 +1763,11 @@ const testData = {
       ],
       guestRecomendation: ["Alex Tabarrok"],
     },
-    "India: A Story Through 100 Objects by Vidya Dehejia": {
+    "India: A Story Through 100 Objects": {
       episodeTitle: [
         "A Critique of Government That Progressives — Myself Included — Need to Hear",
       ],
+      author: "Vidya Dehejia",
       guestRecomendation: ["Alex Tabarrok"],
     },
     "The Splendid and the Vile": {
@@ -1808,7 +1834,8 @@ const testData = {
       episodeTitle: ["Let’s Talk About How Truly Bizarre Our Supreme Court Is"],
       guestRecomendation: ["Jamal Greene"],
     },
-    "Cult of the Constitution by Mary Anne Franks": {
+    "Cult of the Constitution": {
+      author: "Mary Anne Franks",
       episodeTitle: ["Let’s Talk About How Truly Bizarre Our Supreme Court Is"],
       guestRecomendation: ["Jamal Greene"],
     },
@@ -1891,6 +1918,7 @@ const testData = {
       guestRecomendation: ["Leon Kass"],
     },
     "The Hebrew Bible, especially Genesis and Exodus": {
+      author: "",
       episodeTitle: [
         "Timeless Wisdom for Leading a Life of Love, Friendship and Learning",
       ],
@@ -3289,6 +3317,7 @@ const testData = {
       guestRecomendation: ["Hélène Landemore"],
     },
     "Mortelle Adèle series": {
+      author: "",
       episodeTitle: ["A Radical Proposal for True Democracy"],
       guestRecomendation: ["Hélène Landemore"],
     },
@@ -3378,6 +3407,7 @@ const testData = {
       guestRecomendation: ["Elizabeth Kolbert"],
     },
     "The Complete Stories of Franz Kafka": {
+      author: "Franz Kafka",
       episodeTitle: ["Should We Dim the Sun? Will We Even Have a Choice?"],
       guestRecomendation: ["Elizabeth Kolbert"],
     },
