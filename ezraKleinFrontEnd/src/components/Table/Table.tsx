@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import { book, DataType, testData } from "../../testData";
-import { DisplayRow, HiddenRow, TableHead, TableRow } from "./table.style";
+import {
+  BookCover,
+  DisplayRow,
+  HiddenRow,
+  TableHead,
+  TableRow,
+  TableElement,
+} from "./table.style";
 const data = testData;
 const Table = () => {
   const books = Object.keys(data.books);
   return (
-    <table>
+    <TableElement>
       <caption>Ezra Klein Show Book Reccomendations</caption>
       <thead>
         <TableHead>
           <th scope="col"></th>
+          <th scope="col">Book Cover</th>
           <th scope="col">Book Title</th>
           <th scope="col">Author</th>
           <th scope="col">Rating</th>
@@ -20,7 +28,7 @@ const Table = () => {
           <TableRows title={title} data={data.books[title]} />
         ))}
       </tbody>
-    </table>
+    </TableElement>
   );
 };
 
@@ -38,24 +46,39 @@ const TableRows = ({ data, title }: RowProps) => {
         onClick={() => {
           setShowInfo(!showInfo);
         }}
+        showInfo={showInfo}
       >
         <td>
-          <DisplayRow>+</DisplayRow>
+          <DisplayRow rotateToggle={showInfo}>+</DisplayRow>
         </td>
+        <th>
+          <BookCover src="" />
+        </th>
         <th scope="row">{title}</th>
         <td>{data.author}</td>
         <td>{data.rating ? data.rating : null}</td>
       </TableRow>
-      <HiddenRow showInfo={showInfo}>
-        <td colSpan={2}>
-          <div>{data.episodeTitle}</div>
-        </td>
-        <td colSpan={2}>
-          {data.episodeTitle.map((title) => (
-            <div>{JSON.stringify(episodes[title]?.date)}</div>
-          ))}
-        </td>
-      </HiddenRow>
+      <HiddenRowElement showInfo={showInfo} data={data.episodeTitle} />
     </>
+  );
+};
+interface HiddenRowElementProps {
+  showInfo: boolean;
+  data: string[];
+}
+export const HiddenRowElement = ({ showInfo, data }: HiddenRowElementProps) => {
+  return (
+    <HiddenRow showInfo={showInfo}>
+      <td colSpan={4}>
+        {data.map((title) => (
+          <div>{title}</div>
+        ))}
+        {/* </td>
+      <td colSpan={2}> */}
+        {data.map((title) => (
+          <div>{JSON.stringify(episodes[title]?.date)}</div>
+        ))}
+      </td>
+    </HiddenRow>
   );
 };
